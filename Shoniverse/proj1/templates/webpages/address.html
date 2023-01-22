@@ -1,0 +1,168 @@
+{% include 'webpages/header.html' %}
+{% load static %}
+
+<html>
+
+<head>
+	<title>Footwear - Free Bootstrap 4 Template by Colorlib</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Rokkitt:100,300,400,700" rel="stylesheet">
+
+	<!-- Animate.css' %} -->
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+	<!-- Ion Icon Fonts-->
+	<link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="{% static 'css/flexslider.css' %}">
+
+	<!-- Owl Carousel -->
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
+	<!-- Date Picker -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+	<!-- Flaticons  -->
+	<link rel="stylesheet" href="{% static 'fonts/flaticon/font/flaticon.css' %}">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+	
+		<div class="colorlib-product">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8">
+						<form method="post" class="colorlib-form" action="{% url 'address' %}">
+							{% csrf_token %}
+							<h2>Billing Details</h2>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="country">Select Country</label>
+										<div class="form-field">
+											<i class="icon icon-arrow-down3"></i>
+											<select name="people" id="people" class="form-control">
+												<option value="#">India</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="fname">First Name</label>
+										<input type="text" id="fname" class="form-control" placeholder="Your firstname"
+											name="fname">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="lname">Last Name</label>
+										<input type="text" id="lname" class="form-control" placeholder="Your lastname"
+											name="lname">
+									</div>
+								</div>
+
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="fname">Address</label>
+										<input type="text" id="address" class="form-control"
+											placeholder="Enter Your Address" name="address1">
+									</div>
+									<div class="form-group">
+										<input type="text" id="address2" class="form-control"
+											placeholder="Second Address" name="address2">
+									</div>
+								</div>
+
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="companyname">Town/City</label>
+										<input type="text" id="towncity" class="form-control" placeholder="Town or City"
+											name="city">
+									</div>
+								</div>
+
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="lname">Zip/Postal Code</label>
+										<input type="text" id="zippostalcode" class="form-control"
+											placeholder="Zip / Postal" name="postal" maxlength="6">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="email">E-mail Address</label>
+										<input type="text" id="email" class="form-control" placeholder="Your Email" value="{{user.email}}" readonly>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="Phone">Phone Number</label>
+										<input type="text" id="zippostalcode" class="form-control" placeholder="Your Phone"
+											name="phone" maxlength="10">
+									</div>			
+								</div>		
+								
+							</div>
+							<div class="row">
+								<div class="col-md-12 mt-3">
+									<p><input type="submit" class="btn btn-primary" value="add address" style=" background-color: #7bc2b5; border: #7bc2b5;"></p>
+								</div>
+							</div>
+						</form>
+					</div>
+					
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="{% static 'js-gotop"><i class="ion-ios-arrow-up"></i></a>
+	</div>
+
+	<!-- jQuery -->
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<!-- popper -->
+	<script src="{% static 'js/popper.min.js' %}"></script>
+	<!-- bootstrap 4.1 -->
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<!-- jQuery easing -->
+	<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+	<!-- Waypoints -->
+	<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+	<!-- Flexslider -->
+	<script src="{% static 'js/jquery.flexslider-min.js' %}"></script>
+	<!-- Owl carousel -->
+	<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+	<!-- Magnific Popup -->
+	<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'js/magnific-popup-options.js' %}"></script>
+	<!-- Date Picker -->
+	<script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+	<!-- Stellar Parallax -->
+	<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+	<!-- Main -->
+	<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

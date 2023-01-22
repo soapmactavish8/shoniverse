@@ -1,0 +1,67 @@
+{% include 'adminpage/sidebardemo.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <div class="span3">
+                </div><!--/.span3-->
+
+                <div class="container-fluid pt-4 px-4">
+                    <div class="bg-light rounded h-100 p-4">
+                        <h6 class="mb-4">Manage Order</h6>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr style="color: black;">
+                                <th scope="col">SR.</th>
+                                <th scope="col">Order_id</th>
+                                <th scope="col">User_id</th>
+                                <th scope="col">User Name</th>
+                                <th scope="col">Prod_id</th>
+                                <th scope="col">Name</th>
+<!--                                <th scope="col">Image</th>-->
+                                <th scope="col">Price</th>
+                                <th scope="col">Datetime_of_payment</th>
+                                <th scope="col">Invoice_No</th>
+                                <th scope="col">Status</th>
+
+                            </tr>
+                            </thead>
+                            {% for i in all %}
+                            <tbody>
+                            <tr style="color: black;">
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{i.orderid}}</td>
+                                <td>{{i.userid.id}}</td>
+                                <td>{{i.userid.fname}} {{i.userid.lname}}</td>
+                                <td>{{i.prodid.id}}</td>
+                                <td>{{i.name}}</td>
+<!--                                <td>-->
+<!--                                    <div class="img" style="background-image: url({{i.image.url}});">-->
+<!--                                    </div>-->
+<!--                                </td>-->
+                                <td>{{i.price}}</td>
+                                <td>{{i.Datetime_of_payment}}</td>
+                                <td>{{i.Invoice_No}}</td>
+                                <td>{{i.status}}</td>
+                            </tr>
+                            </tbody>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+	

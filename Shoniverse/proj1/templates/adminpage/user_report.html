@@ -1,0 +1,54 @@
+{% include 'adminpage/sidebardemo.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="span3">
+                    	<div class="span3">
+				</div><!--/.span3-->
+
+     <div class="container-fluid pt-4 px-4">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Users Report</h6>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr style="color: black;">
+                                        <th scope="col">ID</th>
+                                        <th scope="col">User Name</th>
+                                        <th scope="col">User Email</th>
+                                        <th scope="col">Contact</th>
+                                    </tr>
+                                </thead>
+                                 {% for i in user %}
+                                <tbody>
+                                    <tr style="color: black;">
+                                        <th scope="row">{{forloop.counter}}</th>
+                                        <td>{{i.fname}} {{i.lname}}</td>
+                                        <td>{{i.email}}</td>
+                                        <td>{{i.phone}}</td>
+                                    </tr>                        
+                                </tbody>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                   <div class="control-group">
+									<div class="controls">
+										<a href="/render/pdf/" style="background-color: black; color:white; margin-left:30px;"  type="submit" class="btn" >Generate User Report</a>
+									</div>
+								</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+	

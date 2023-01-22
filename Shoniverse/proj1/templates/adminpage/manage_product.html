@@ -1,0 +1,71 @@
+{% include 'adminpage/sidebardemo.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="span3">
+                    	<div class="span3">
+				</div><!--/.span3-->
+
+     <div class="container-fluid pt-4 px-4">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Manage Product</h6>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr style="color: black; font-weight: bold;">
+                                        <td>Id</td>
+                                            <td>ProductName</td>
+                                            <td>Brand</td>
+                                            <!-- <td>ProductDescription</td> -->
+											<td>ProductQuantity</td>
+                                            <td>ProductStock</td>
+                                            <!-- <td>ProductImage</td> -->
+                                            <td>ProductPrice</td>
+                                            <td>ProductSize</td>
+                                            <td>ProductColor</td>
+											<td>Category</td>
+											<td>Sub-Category</td>
+                                            <td>Edit</td>
+                                            <td>Delete</td>
+                                    </tr>
+                                </thead>
+                                {% for i in all %}
+                                <tbody>
+                                    <tr style="color: black;">
+                                        <td>{{forloop.counter}}</td>
+                                            <td>{{i.prodName}}</td>
+                                            <td>{{i.brand}}</td>
+                                            <!-- <td>{{i.prodDescription}}</td> -->
+											<td>{{i.prodQuantity}}</td>
+                                            <td>{{i.stock}}</td>
+                                            <!-- <td>{{i.prod_img}}</td> -->
+                                            <td>{{i.prodPrice}}</td>
+                                            <td>{{i.prodSize}}</td>
+                                            <td>{{i.prodColor}}</td>
+											<td>{{i.catid.c_name}}</td>
+											<td>{{i.subcatid.s_name}}</td>
+                                            <td><a href="edit_product/{{i.id}}" class="btn btn-primary px-2" style="background-color: rgb(93, 76, 192); border: none; border-radius: 20px;">Edit</a>
+                                            </td>   
+                                            <td><a href="delete_product/{{i.id}}" class="btn btn-primary px-1" style="background-color: rgb(190, 68, 68); border: none; border-radius: 20px;">Delete</a>
+                                            </td>
+                                        </tr>                        
+                                </tbody>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+	

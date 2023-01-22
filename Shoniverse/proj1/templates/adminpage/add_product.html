@@ -1,0 +1,97 @@
+{% include 'adminpage/sidebardemo.html' %}
+
+<div class="container mt-3">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="h-100 bg-light rounded p-4"  style="margin-right: 50px; margin-left:50px;"> 
+            <div class="d-flex align-items-center justify-content-between mb-4">
+            <h4 class="mb-0">Add Product</h4>
+            </div>
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <h6 class="mb-0" style="width:200px;">Category</h6>
+                <select class="form-select" aria-label="Default select example" name="catid">
+                <option selected>Select Category</option>
+                {% for i in cat %}
+                <option value="{{i.id}}">{{i.c_name}}</option>
+                {% endfor %}
+                </select>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-between mb-4" style="margin-top:40px">
+                <h6 class="mb-0" style="width:200px;">Sub-Category </h6>
+
+                <select class="form-select" aria-label="Default select example" name="subcatid">
+                <option selected>Select Sub-Category</option>
+                {% for i in sub %}
+                <option value="{{i.id}}">{{i.s_name}}</option>
+                {% endfor %}
+                </select>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-between mb-4" style="margin-top:40px">
+                <h6 class="mb-0" style="width:200px;">Product Brand</h6>
+                <input class="form-control bg-transparent" type="text" name="brand" placeholder="Enter Product  Brand" >
+            </div>
+
+        <div class="d-flex align-items-center justify-content-between mb-4" style="margin-top:40px">
+                <h6 class="mb-0" style="width:200px;">Product Name</h6>
+                <input class="form-control bg-transparent" type="text" name="prodName" placeholder="Enter Product" >
+            </div>
+
+        <div class="d-flex align-items-center justify-content-between mb-4" style="margin-top:40px">
+                <h6 class="mb-0" style="width:200px;">Product Description</h6>
+                <input class="form-control bg-transparent" type="text" name="prodDescription" placeholder="Enter Product Details">
+            </div>
+            <div class="d-flex align-items-center justify-content-between mb-4" style="margin-top:40px">
+                <h6 class="mb-0" style="width:200px;">Product Description1</h6>
+                <input class="form-control bg-transparent" type="text" name="prodDescription1" placeholder="Enter More Product Details">
+            </div>
+             <div class="d-flex align-items-center justify-content-between mb-4" style="margin-top:40px">
+                <h6 class="mb-0" style="width:200px;">Size</h6>
+                <input class="form-control bg-transparent" type="text" name="prodSize" placeholder="Enter Product Size">
+            </div>
+             <div class="d-flex align-items-center justify-content-between mb-4" style="margin-top:40px">
+                <h6 class="mb-0" style="width:200px;">Color</h6>
+                <input class="form-control bg-transparent" type="text" name="prodColor" placeholder="Enter Product Color">
+            </div>
+
+        <div class="d-flex align-items-center justify-content-between mb-4" style="margin-top:40px" name="prodStock">
+                <h6 class="mb-0">Product Stock</h6>
+
+                <form>
+                <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="stock" id="inlineRadio1" value="Available">
+                        <label class="form-check-label" for="inlineRadio1">Available</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="stock" id="inlineRadio2" value="Not A    vailable">
+                        <label class="form-check-label" for="inlineRadio2" style="margin-right: 520px;">Out of Stock</label>
+                    </div>
+                </div>
+            </form>
+
+        <div class="d-flex align-items-center justify-content-between mb-4" style="margin-top:40px">
+                <h6 class="mb-0" style="width:200px;">Product Image</h6>
+                <input class="form-control" type="file" name="prod_img" id="formFileMultiple" multiple required/>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between mb-4" style="margin-top:40px">
+                <h6 class="mb-0" style="width:200px;" placeholder="Enter Product Price">Product Price</h6>
+                <input class="form-control bg-transparent" name="prodPrice" type="text" placeholder="Enter Product Price" >
+            </div>
+    <div class="d-flex align-items-center justify-content-between mb-4" style="margin-top:40px">
+                <h6 class="mb-0" style="width:200px;" placeholder="Enter Product Price">Disccount Price</h6>
+                <input class="form-control bg-transparent" name="prodDisccountPrice" type="text" placeholder="Enter Product Disccount Price" >
+            </div>
+
+        <div class="d-flex align-items-center justify-content-between mb-4" style="margin-top:40px">
+                <h6 class="mb-0" style="width:200px;">Product Quantity</h6>
+                <input class="form-control bg-transparent" name="prodQuantity" type="text" placeholder="Enter Product Quantity">
+            </div> 
+            <br/>
+            <input type="submit" class="btn btn-primary  px-4" value="Submit">
+            <div style="margin-top: 30px;"></div>
+        </div>
+    </form>
+</div>

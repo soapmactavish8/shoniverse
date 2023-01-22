@@ -1,0 +1,251 @@
+	{% include 'webpages/header.html' %}
+	{% load static %}
+
+	<html>
+
+	<head>
+		<title>Footwear - Free Bootstrap 4 Template by Colorlib</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Rokkitt:100,300,400,700" rel="stylesheet">
+
+		<!-- Animate.css' %} -->
+		<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+		<!-- Icomoon Icon Fonts-->
+		<link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+		<!-- Ion Icon Fonts-->
+		<link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+		<!-- Bootstrap  -->
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+		<!-- Magnific Popup -->
+		<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+		<!-- Flexslider  -->
+		<link rel="stylesheet" href="{% static 'css/flexslider.css' %}">
+
+		<!-- Owl Carousel -->
+		<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
+		<!-- Date Picker -->
+		<link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+		<!-- Flaticons  -->
+		<link rel="stylesheet" href="{% static 'fonts/flaticon/font/flaticon.css' %}">
+
+		<!-- Theme style  -->
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+		<style>
+			.body {
+				color: black;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- Add Address -->
+		<div class="colorlib-product">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8">
+						<div style="border: 2px dashed #68beb0a8;">
+							<a href="{% url 'address' %}"
+								style="color: #047BD5; font-size: 22px; font-weight: 500; margin-left: 10px;"><span
+									style="font-size: 36px;"> + </span> Add a new address</a>
+						</div>
+						{% for ad in addressid %}
+						<div
+							style="border: 1px solid #9e9e9e2f;; padding: 10px; font-size: 16px; font-weight: 400; background-color: #68beb052;">
+							<input type="radio" id="html" name="fav_language" value="{{ad.id}}"
+								style="margin-right: 10px; width: 18px; height: 18px;" checked>
+
+							<a style="color: black;">{{ad.firstname}}&nbsp;{{ad.lastname}}
+								<a href="editaddress/{{ad.id}}" class="btn btn-primary rounded-0"
+									style="color: #047BD5; font-weight: 600; border: 1px solid rgba(0, 0, 0, 0.041); float: right; background-color: white; box-shadow: 5px 4px rgba(0, 0, 0, 0.397); padding-right: 30px; padding-left: 30px;">Edit</a>
+								<div style="margin-left: 20px;">
+									<br><a style="color: black;">{{ad.address1}},<a href="deladdress/{{ad.id}}"
+											class="btn btn-primary rounded-0"
+											style="color: #047BD5; font-weight: 600; border: 1px solid rgba(0, 0, 0, 0.041); float: right; background-color: white; box-shadow: 5px 4px rgba(0, 0, 0, 0.397);">Delete</a></a><br>
+									<a style="color: black;">{{ad.address2}}</a><br>
+									<a style="color: black;">{{ad.city}}, {{ad.postalcode}}</a><br>
+									<div style="margin-top: 10px; color: black;"><a>{{ad.phoneno}}</a></div>
+								</div>
+						</div>
+						{% endfor %}
+					</div>
+
+					<div class="col-lg-4">
+						<div class="row">
+							<div class="col-md-12">
+
+								<div class="cart-detail" style="font-size: 15px;">
+								{% if prod %}
+									<h2>Total Amount</h2>
+									<ul>
+										<li>
+											<ul>
+												<li><span>1 x {{prod.prodName}}</span> <span>₹{{prod.prodDisccountPrice}}</span>
+												</li>
+											</ul>
+										</li>
+										<li><span>Shipping</span> <span>₹60.00</span></li>
+										<li><span>Order Total</span> <span>₹{{subtotal}}</span></li>
+									</ul>
+								{% else %}
+
+									<h2>Total Amount</h2>
+									<ul>
+										<li>
+											<ul>
+												{% for i in cartProd %}
+												<li><span>{{i.quantity}} x {{i.name}}</span> <span>₹{{i.price}}</span>
+												</li>
+												{% endfor %}
+											</ul>
+										</li>
+										<li><span>Shipping</span> <span>₹60.00</span></li>
+										<li><span>Order Total</span> <span>₹{{subtotal}}</span></li>
+									</ul>
+								{% endif %}
+
+								</div>
+							</div>
+							<div class="row" style="margin-left: 150px;">
+								<form method="post" action="{% url 'payment_done' %}">
+
+									{% csrf_token %}
+									<script src="https://checkout.razorpay.com/v1/checkout.js"
+										data-key="rzp_test_onjvGOsWSddoH1" data-amount="{% widthratio total 1 100 %}"
+										data-currency="INR" data-order_id="{{payment.id}}"
+										data-description="Covid-19 Products" data-prefill.name="{{user.username}}"
+										data-prefill.email="{{user.email}}" data-prefill.contact="8140815790"
+										data-name="Shoeniverse Private Ltd." data-theme.color="#7bc2b5"
+										data-payment_button_id="pl_GdRmzRJExgqjHh ">
+										</script>
+								</form>
+							</div>
+						</div>
+
+						<!--------------- Razor pay --------------->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer id="colorlib-footer" role="contentinfo">
+			<div class="container">
+				<div class="row row-pb-md">
+					<div class="col footer-col colorlib-widget">
+						<h4>About Footwear</h4>
+						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost
+							unorthographic life</p>
+						<p>
+						<ul class="colorlib-social-icons">
+							<li><a href="#"><i class="icon-twitter"></i></a></li>
+							<li><a href="#"><i class="icon-facebook"></i></a></li>
+							<li><a href="#"><i class="icon-linkedin"></i></a></li>
+							<li><a href="#"><i class="icon-dribbble"></i></a></li>
+						</ul>
+						</p>
+					</div>
+					<div class="col footer-col colorlib-widget">
+						<h4>Customer Care</h4>
+						<p>
+						<ul class="colorlib-footer-links">
+							<li><a href="#">Contact</a></li>
+							<li><a href="#">Returns/Exchange</a></li>
+							<li><a href="#">Gift Voucher</a></li>
+							<li><a href="#">Wishlist</a></li>
+							<li><a href="#">Special</a></li>
+							<li><a href="#">Customer Services</a></li>
+							<li><a href="#">Site maps</a></li>
+						</ul>
+						</p>
+					</div>
+					<div class="col footer-col colorlib-widget">
+						<h4>Information</h4>
+						<p>
+						<ul class="colorlib-footer-links">
+							<li><a href="#">About us</a></li>
+							<li><a href="#">Delivery Information</a></li>
+							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="#">Support</a></li>
+							<li><a href="#">Order Tracking</a></li>
+						</ul>
+						</p>
+					</div>
+
+					<div class="col footer-col">
+						<h4>News</h4>
+						<ul class="colorlib-footer-links">
+							<li><a href="blog.html">Blog</a></li>
+							<li><a href="#">Press</a></li>
+							<li><a href="#">Exhibitions</a></li>
+						</ul>
+					</div>
+
+					<div class="col footer-col">
+						<h4>Contact Information</h4>
+						<ul class="colorlib-footer-links">
+							<li>291 South 21th Street, <br> Suite 721 New York NY 10016</li>
+							<li><a href="tel://1234567920">+ 1235 2355 98</a></li>
+							<li><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
+							<li><a href="#">yoursite.com</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="copy">
+				<div class="row">
+					<div class="col-sm-12 text-center">
+						<p>
+							<span>
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+								Copyright &copy;
+								<script>document.write(new Date().getFullYear());</script> All rights reserved | This
+								template is made with <i class="icon-heart" aria-hidden="true"></i> by <a
+									href="https://colorlib.com" target="_blank">Colorlib</a>
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							</span>
+							<span class="block">Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a>
+								, <a href="http://pexels.com/" target="_blank">Pexels.com</a></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		</div>
+
+		<div class="gototop js-top">
+			<a href="#" class="{% static 'js-gotop"><i class="ion-ios-arrow-up"></i></a>
+		</div>
+
+		<!-- jQuery -->
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<!-- popper -->
+		<script src="{% static 'js/popper.min.js' %}"></script>
+		<!-- bootstrap 4.1 -->
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+		<!-- jQuery easing -->
+		<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+		<!-- Waypoints -->
+		<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+		<!-- Flexslider -->
+		<script src="{% static 'js/jquery.flexslider-min.js' %}"></script>
+		<!-- Owl carousel -->
+		<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+		<!-- Magnific Popup -->
+		<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+		<script src="{% static 'js/magnific-popup-options.js' %}"></script>
+		<!-- Date Picker -->
+		<script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+		<!-- Stellar Parallax -->
+		<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+		<!-- Main -->
+		<script src="{% static 'js/main.js' %}"></script>
+
+	</body>
+
+	</html>
